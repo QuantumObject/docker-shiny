@@ -1,10 +1,10 @@
 #name of container: docker-shiny
-#versison of container: 0.5.9
+#version of container: 0.5.9
 FROM quantumobject/docker-baseimage:16.04
 MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
 # Update the container
-# Installation of nesesary package/software for this containers...
+# Installation of necessary packages/software for this container...
 RUN (echo "deb http://cran.mtu.edu/bin/linux/ubuntu `cat /etc/container_environment/DISTRIB_CODENAME`/" >> /etc/apt/sources.list && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9)
 RUN apt-get update && apt-get install -y -q r-base  \
                     r-base-dev \
@@ -29,13 +29,13 @@ RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" \
 RUN  R -e "install.packages('rmarkdown', repos='http://cran.rstudio.com/')"
 
 ##startup scripts  
-#Pre-config scrip that maybe need to be run one time only when the container run the first time .. using a flag to don't 
+#Pre-config scrip that may be needed to be run one time only when the container run the first time .. using a flag to don't 
 #run it again ... use for conf for service ... when run the first time ...
 RUN mkdir -p /etc/my_init.d
 COPY startup.sh /etc/my_init.d/startup.sh
 RUN chmod +x /etc/my_init.d/startup.sh
 
-##Adding Deamons to containers
+##Adding daemons to containers
 RUN mkdir /etc/service/shiny-server /var/log/shiny-server ; sync 
 COPY shiny-server.sh /etc/service/shiny-server/run
 RUN chmod +x /etc/service/shiny-server/run  \
@@ -43,11 +43,11 @@ RUN chmod +x /etc/service/shiny-server/run  \
     && chown -R shiny /var/log/shiny-server \
     && sed -i '113 a <h2><a href="./examples/">Other examples of Shiny application</a> </h2>' /srv/shiny-server/index.html
 
-#volume for Shiny Apps and static assets. Here is the folder for index.html(link) and sample apps.
+#volume for Shiny Apps and static assets. Here is the folder for index.html (link) and sample apps.
 VOLUME /srv/shiny-server
 
-# to allow access from outside of the container  to the container service
-# at that ports need to allow access from firewall if need to access it outside of the server. 
+# to allow access from outside of the container to the container service
+# at the ports to allow access from firewall if accessing from outside the server. 
 EXPOSE 3838
 
 # Use baseimage-docker's init system.
