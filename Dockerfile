@@ -5,7 +5,6 @@ MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
 # Update the container
 # Installation of necessary packages/software for this container...
-RUN (echo "deb http://cran.mtu.edu/bin/linux/ubuntu `cat /etc/container_environment/DISTRIB_CODENAME`+cran35/" >> /etc/apt/sources.list && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9)
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q r-base  \
                     r-base-dev \
                     gdebi-core \  
