@@ -17,8 +17,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q r-bas
                     && rm -rf /var/lib/apt/lists/*
                     
 # Add shiny user
-RUN groupadd  shiny \
-    && useradd --disabled-password --gecos "" shiny          
+RUN adduser --disabled-password --gecos "" shiny           
 
 RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" \
           && update-locale  \
