@@ -1,6 +1,6 @@
 #name of container: docker-shiny
-#version of container: 0.6.3
-FROM quantumobject/docker-baseimage:18.04
+#version of container: 0.6.4
+FROM quantumobject/docker-baseimage:19.04
 MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
 # Update the container
@@ -10,19 +10,16 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q r-bas
                     gdebi-core \  
                     libapparmor1 \
                     sudo \
-                    libssl1.0.0 \
+                    libssl1.1 \
                     libcurl4-openssl-dev \
                     && apt-get clean \
                     && rm -rf /tmp/* /var/tmp/*  \
                     && rm -rf /var/lib/apt/lists/*
                     
-# Add shiny user
-RUN adduser --disabled-password --gecos "" shiny           
-
 RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" \
           && update-locale  \
           && wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.12.933-amd64.deb \
-          && dpkg -i --force-depends shiny-server-1.5.9.923-amd64.deb \
+          && dpkg -i --force-depends shiny-server-1.5.12.933-amd64.deb \
           && rm shiny-server-1.5.12.933-amd64.deb \
           && mkdir -p /srv/shiny-server; sync  \
           && mkdir -p  /srv/shiny-server/examples; sync \
