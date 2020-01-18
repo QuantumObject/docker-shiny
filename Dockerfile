@@ -1,5 +1,5 @@
 #name of container: docker-shiny
-#version of container: 0.6.2
+#version of container: 0.6.3
 FROM quantumobject/docker-baseimage:18.04
 MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
