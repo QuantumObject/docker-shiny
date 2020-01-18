@@ -16,6 +16,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q r-bas
                     && rm -rf /tmp/* /var/tmp/*  \
                     && rm -rf /var/lib/apt/lists/*
                     
+# Add shiny user
+RUN groupadd  shiny \
+    && useradd shiny --shell /bin/bash --create-home shiny          
+
 RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" \
           && update-locale  \
           && wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.12.933-amd64.deb \
