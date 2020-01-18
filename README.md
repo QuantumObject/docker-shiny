@@ -1,6 +1,6 @@
 # docker-shiny
 
-Docker container for [shiny server 1.5.9.923][3]
+Docker container for [shiny server 1.5.12.933][3]
 
 "A web application framework for R"
 
