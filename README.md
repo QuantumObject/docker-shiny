@@ -1,6 +1,6 @@
 # docker-shiny
 
-Docker container for [shiny server 1.5.12.933][3]
+Docker container for [shiny server 1.5.13.944][3]
 
 "A web application framework for R"
 
@@ -23,7 +23,7 @@ To install docker in Ubuntu 18.04 use the commands:
 
 To run container use the command below:
 
-    $ docker run -d -p 3838:3838 quantumobject/docker-shiny
+    $ docker run -d -p 3838:3838 --name shiny quantumobject/docker-shiny
 
 To run the container with your own Shiny applications located in a directory on
 your system, expose that directory path to the Shiny server inside the container:
