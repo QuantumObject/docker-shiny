@@ -21,7 +21,6 @@ RUN R -e "install.packages('shiny', repos='http://cran.rstudio.com/')" \
           && wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.13.944-amd64.deb \
           && dpkg -i --force-depends shiny-server-1.5.13.944-amd64.deb \
           && rm shiny-server-1.5.13.944-amd64.deb \
-          && mkdir -p /srv/shiny-server; sync  \
           && mkdir -p  /srv/shiny-server/examples; sync \
           && cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/examples/. 
           
