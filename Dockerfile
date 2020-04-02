@@ -5,7 +5,7 @@ MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
 # Update the container
 # Installation of necessary packages/software for this container...
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q r-base  \
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends r-base  \
                     r-base-dev \
                     gdebi-core \  
                     libapparmor1 \
