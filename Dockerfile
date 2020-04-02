@@ -40,8 +40,10 @@ COPY shiny-server.sh /etc/service/shiny-server/run
 RUN chmod +x /etc/service/shiny-server/run  \
     && cp /var/log/cron/config /var/log/shiny-server/ \
     && chown -R shiny /var/log/shiny-server \
-    && sed -i '113 a <h2><a href="./examples/">Other examples of Shiny application</a> </h2>' /srv/shiny-server/index.html
-
+    && sed -i '113 a <h2><a href="./examples/">Other examples of Shiny application</a> </h2>' /srv/shiny-server/index.html \
+    && mkdir -p /var/backup; sync \
+    && cp -Rp /srv/shiny-server  /var/backup
+     
 #volume for Shiny Apps and static assets. Here is the folder for index.html (link) and sample apps.
 VOLUME /srv/shiny-server
 
