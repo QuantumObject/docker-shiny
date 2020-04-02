@@ -7,7 +7,6 @@ if [ "$(ls -A /srv/shiny-server)" ]; then
     echo "shiny-server folder with data"    
 else
     cp -Rp /var/backup/shiny-server/* /srv/shiny-server/ 
-    chown -R shiny:shiny /srv/shiny-server
 fi
 
 
