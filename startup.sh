@@ -6,7 +6,7 @@ set -e
 if [ "$(ls -A /srv/shiny-server)" ]; then
     echo "shiny-server folder with data"    
 else
-    cp -Rp /var/backup/shiny-server/* /srv/shiny-server/ 
+    cp -Rp /var/backup/shiny-server/. /srv/shiny-server/ 
 fi
 
 
