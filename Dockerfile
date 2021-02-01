@@ -1,5 +1,5 @@
 #name of container: docker-shiny
-#version of container: 0.7
+#version of container: 0.8
 FROM quantumobject/docker-baseimage:20.04
 MAINTAINER Angel Rodriguez  "angel@quantumobject.com"
 
@@ -18,9 +18,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-
                     
 RUN R -e "install.packages(c('shiny','rmarkdown'), repos='http://cran.rstudio.com/', clean=TRUE)" \
           && update-locale  \
-          && wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.13.944-amd64.deb \
-          && dpkg -i --force-depends shiny-server-1.5.13.944-amd64.deb \
-          && rm shiny-server-1.5.13.944-amd64.deb \
+          && wget https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.16.958-amd64.deb \
+          && dpkg -i --force-depends shiny-server-1.5.16.958-amd64.deb \
+          && rm shiny-server-1.5.16.958-amd64.deb \
           && mkdir -p  /srv/shiny-server/examples; sync \
           && cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/examples/. 
           
