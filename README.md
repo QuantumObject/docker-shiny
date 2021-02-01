@@ -1,6 +1,6 @@
 # docker-shiny
 
-Docker container for [shiny server 1.5.13.944][3]
+Docker container for [shiny server 1.5.16.958][3]
 
 "A web application framework for R"
 
@@ -12,7 +12,7 @@ Shiny server: use to host and manage shiny application (R - powered web applicat
 
   - [Docker][2]
 
-To install docker in Ubuntu 18.04 use the commands:
+To install docker in Ubuntu 20.04 use the commands:
 
     $ sudo apt-get update
     $ sudo wget -qO- https://get.docker.com/ | sh
